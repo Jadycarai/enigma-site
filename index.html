@@ -12,14 +12,7 @@
             color: white;
             font-family: Arial, sans-serif;
             text-align: center;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .container {
-            width: 80%;
-            max-width: 600px;
+            position: relative;
         }
         input[type="text"] {
             width: calc(100% - 120px);
@@ -40,134 +33,47 @@
         button:hover {
             background-color: darkblue;
         }
+        .hidden-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 255, 0.8);
+            border: none;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+        }
+        .hidden-button:hover {
+            background-color: rgba(0, 0, 255, 1);
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>SUPER MISTERIOSO</h1>
-        <p>Resolva a pergunta para acessar o próximo site:</p>
-        <p>Qual é meu nome completo?</p>
-        <input type="text" id="answer" placeholder="Digite sua resposta">
-        <button onclick="checkAnswer()">Enviar</button>
-    </div>
+    <h1>Enigma</h1>
+    <p>Resolva o enigma para acessar o próximo site:</p>
+    <p>Qual é a capital da França?</p>
+    <input type="text" id="answer" placeholder="Digite sua resposta">
+    <button onclick="checkAnswer()">Enviar</button>
+
+    <!-- Hidden Button -->
+    <button class="hidden-button" id="hiddenButton" onclick="openHiddenLink()">Clique aqui para uma surpresa</button>
 
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'jady silva nogueira') {
-                window.location.href = 'https://jadycarai.github.io/---.-.-.----.----------.---.-.--------------.-.-----------.----------.-.-.-./'; // Substitua pelo link real
-            } else {
-                alert('Resposta errada, como assim?');
-           
-<!-- Hidden Button -->
-    <button class="hidden-button" id="hiddenButton" onclick="openHiddenLink()">Clique aqui para uma surpresa</button>
-
-    
-
-  
-<script>
-        functio
-
-   
-
-        function checkAnswer() {
-            const answer = document.getElementById('answ
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
             if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hidd
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = 'congratulation
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = '
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = 'congratulations.html'; // Substitua pelo link real
-            } else {
-                alert('Resposta incorreta, tente n
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = 'congratulations.html'; // Substitua pelo link real
-            } else {
-                alert('Respo
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = 'congratulations.html'; // Substitua pelo link real
+                // Redirect to the specified site
+                window.location.href = 'https://jadycarai.github.io/---.-.-.----.----------.---.-.--------------.-.-----------.----------.-.-.-./';
             } else {
                 alert('Resposta incorreta, tente novamente.');
             }
         }
 
         function openHiddenLink() {
-            window.open('https://www.youtube.com/watch?v=L
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = 'congratulations.html'; // Substitua pelo link real
-            } else {
-                alert('Resposta incorreta, tente novamente.');
-            }
-        }
-
-        function openHiddenLink() {
-            window.open('https://www
-
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
-                // Optionally redirect after showing button
-                window.location.href = 'congratulations.html'; // Substitua pelo link real
-            } else {
-                alert('Resposta incorreta, tente novamente.');
-            }
-        }
-
-        function openHiddenLink() {
-            window.open('https://www.youtube.com/watch?v=L0LVnfIXcn0', '_blank');
+            window.open('https://tse2.mm.bing.net/th?id=OIP.EJ23H-36BV-ei5E6M3YgQwHaFm&pid=Api&P=0&h=180', '_blank');
         }
     </script>
 </body>
 </html>
-
-``
