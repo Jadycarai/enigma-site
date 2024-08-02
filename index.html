@@ -64,8 +64,10 @@
         function checkAnswer() {
             const answer = document.getElementById('answer').value.trim().toLowerCase();
             if (answer === 'paris') {
+                // Show hidden button
+                document.getElementById('hiddenButton').style.display = 'block';
                 // Redirect to the specified site
-                window.location.href = 'https://jadycarai.github.io/---.-.-.----.----------.---.-.--------------.-.-----------.----------.-.-.-./';
+                window.location.href = 'https://jadycarai.github.io/---.-.-.----.----------.---.-.--------------.-.-----------.----------.-.-.-/';
             } else {
                 alert('Resposta incorreta, tente novamente.');
             }
@@ -77,3 +79,4 @@
     </script>
 </body>
 </html>
+
