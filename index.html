@@ -46,7 +46,7 @@
     <div class="container">
         <h1>Enigma</h1>
         <p>Resolva o enigma para acessar o próximo site:</p>
-        <p>Qual é a capital da França?</p>
+        <p>Qual é meu nome completo?</p>
         <input type="text" id="answer" placeholder="Digite sua resposta">
         <button onclick="checkAnswer()">Enviar</button>
     </div>
@@ -54,7 +54,7 @@
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
+            if (answer === 'jady silva nogueira') {
                 window.location.href = 'https://outrosite.com'; // Substitua pelo link real
             } else {
                 alert('Resposta incorreta, tente novamente.');
