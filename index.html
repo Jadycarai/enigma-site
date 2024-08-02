@@ -3,76 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enigma Site</title>
+    <title>Site com Quadrado</title>
     <style>
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            position: relative;
+            background-color: #f0f0f0;
         }
-        input[type="text"] {
-            width: calc(100% - 120px);
-            padding: 10px;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px 0 0 5px;
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        button {
-            padding: 10px;
-            font-size: 16px;
-            background-color: blue;
-            color: white;
-            border: none;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: darkblue;
-        }
-        .hidden-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background-color: rgba(0, 0, 255, 0.8);
-            border: none;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .hidden-button:hover {
-            background-color: rgba(0, 0, 255, 1);
+        #hiddenElement {
+            width: 100px;
+            height: 100px;
+            background-color: #4CAF50;
+            display: none;
+            margin: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>Enigma</h1>
-    <p>Resolva o enigma para acessar o próximo site:</p>
-    <p>Qual é a capital da França?</p>
-    <input type="text" id="answer" placeholder="Digite sua resposta">
-    <button onclick="checkAnswer()">Enviar</button>
-
-    <!-- Visible Button -->
-    <button class="hidden-button" id="hiddenButton" onclick="openHiddenLink()">Clique aqui para uma surpresa</button>
+    <div id="container">
+        <div id="hiddenElement"></div>
+        <button id="triggerButton">Clique Aqui</button>
+    </div>
 
     <script>
-        function checkAnswer() {
-            const answer = document.getElementById('answer').value.trim().toLowerCase();
-            if (answer === 'paris') {
-                // Redirect to the specified site
-                window.location.href = 'https://jadycarai.github.io/---.-.-.----.----------.---.-.--------------.-.-----------.----------.-.-.-/';
-            } else {
-                alert('Resposta incorreta, tente novamente.');
-            }
-        }
-
-        function openHiddenLink() {
-            window.open('https://tse2.mm.bing.net/th?id=OIP.EJ23H-36BV-ei5E6M3YgQwHaFm&pid=Api&P=0&h=180', '_blank');
-        }
+        document.getElementById('triggerButton').addEventListener('click', function() {
+            document.getElementById('hiddenElement').style.display = 'block';
+            window.location.href = 'https://example.com/new-page'; // Redirecionamento para uma nova página
+        });
     </script>
 </body>
 </html>
