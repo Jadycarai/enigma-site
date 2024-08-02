@@ -43,7 +43,6 @@
             padding: 10px;
             border-radius: 5px;
             cursor: pointer;
-            display: none; /* Hidden by default */
         }
         .hidden-button:hover {
             background-color: rgba(0, 0, 255, 1);
@@ -57,15 +56,13 @@
     <input type="text" id="answer" placeholder="Digite sua resposta">
     <button onclick="checkAnswer()">Enviar</button>
 
-    <!-- Hidden Button -->
+    <!-- Visible Button -->
     <button class="hidden-button" id="hiddenButton" onclick="openHiddenLink()">Clique aqui para uma surpresa</button>
 
     <script>
         function checkAnswer() {
             const answer = document.getElementById('answer').value.trim().toLowerCase();
             if (answer === 'paris') {
-                // Show hidden button
-                document.getElementById('hiddenButton').style.display = 'block';
                 // Redirect to the specified site
                 window.location.href = 'https://jadycarai.github.io/---.-.-.----.----------.---.-.--------------.-.-----------.----------.-.-.-/';
             } else {
@@ -79,4 +76,3 @@
     </script>
 </body>
 </html>
-
