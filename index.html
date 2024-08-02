@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma Site</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            width: 80%;
+            max-width: 600px;
+        }
+        input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enigma</h1>
+        <p>Resolva o enigma para acessar o próximo site:</p>
+        <p>Qual é a capital da França?</p>
+        <input type="text" id="answer" placeholder="Digite sua resposta">
+        <button onclick="checkAnswer()">Enviar</button>
+    </div>
+
+    <script>
+        function checkAnswer() {
+            const answer = document.getElementById('answer').value.trim().toLowerCase();
+            if (answer === 'paris') {
+                window.location.href = 'https://outrosite.com'; // Substitua pelo link real
+            } else {
+                alert('Resposta incorreta, tente novamente.');
+            }
+        }
+    </script>
+</body>
+</html>
