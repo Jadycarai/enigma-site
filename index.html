@@ -14,17 +14,13 @@
             position: relative;
             height: 100vh;
         }
-        .balloon {
+        .star {
             position: absolute;
-            width: 50px;
-            height: 70px;
-            background-color: red;
-            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: yellow;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
             cursor: pointer;
-            transition: transform 0.2s ease;
-        }
-        .balloon:hover {
-            transform: scale(1.1);
         }
         #document {
             display: none;
@@ -38,42 +34,84 @@
             height: 300px;
             padding: 20px;
             color: black;
-            font-size: 20px;
+            font-size: 24px;
             text-align: center;
+            font-family: 'Cursive', sans-serif;
             border: 2px solid black;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        #gameArea {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        #gameOver {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: red;
+            font-size: 48px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
 <div id="gameArea">
-    <div class="balloon" style="top: 20%; left: 30%;"></div>
-    <div class="balloon" style="top: 50%; left: 60%;"></div>
-    <div class="balloon" style="top: 70%; left: 40%;"></div>
-    <div class="balloon" style="top: 40%; left: 80%;"></div>
-    <div class="balloon" style="top: 60%; left: 20%;"></div>
+    <div class="star" style="top: 20%; left: 30%;"></div>
+    <div class="star" style="top: 50%; left: 60%;"></div>
+    <div class="star" style="top: 70%; left: 40%;"></div>
+    <div class="star" style="top: 40%; left: 80%;"></div>
+    <div class="star" style="top: 60%; left: 20%;"></div>
 </div>
 
 <div id="document">
-    <p>AS mansões são do outro lado</p>
+    <p>TExte numero um, catorrteze vezes mamão</p>
 </div>
 
+<div id="gameOver">Game Over</div>
+
 <script>
-    let balloons = document.querySelectorAll('.balloon');
-    let poppedCount = 0;
+    let stars = document.querySelectorAll('.star');
+    let collectedStars = 0;
+    let timeLimit = 10; // 10 seconds to collect all stars
+    let timer;
 
-    balloons.forEach(balloon => {
-        balloon.addEventListener('click', () => {
-            balloon.style.display = 'none'; // Hide balloon when clicked
-            poppedCount++;
+    function startGame() {
+        timer = setTimeout(gameOver, timeLimit * 1000); // Start timer for game over
 
-            if (poppedCount === balloons.length) {
-                // Show the document when all balloons are popped
-                document.getElementById('document').style.display = 'block';
-            }
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                star.style.display = 'none'; // Hide star when clicked
+                collectedStars++;
+
+                if (collectedStars === stars.length) {
+                    clearTimeout(timer); // Stop the timer
+                    winGame(); // Player wins the game
+                }
+            });
         });
-    });
+    }
+
+    function gameOver() {
+        document.getElementById('gameArea').style.display = 'none';
+        document.getElementById('gameOver').style.display = 'flex';
+    }
+
+    function winGame() {
+        document.getElementById('gameArea').style.display = 'none';
+        document.getElementById('document').style.display = 'block';
+    }
+
+    // Start the game when the page loads
+    window.onload = startGame;
 </script>
 
 </body>
