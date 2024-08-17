@@ -1,25 +1,31 @@
-const startButton = document.getElementById('start-button');
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
 const endScreen = document.getElementById('end-screen');
 const endText = document.getElementById('end-text');
-
-let gameRunning = false;
-let playerX = 100;
-let playerY = 100;
-let playerSize = 20;
-let velocity = 2;
+const restartButton = document.getElementById('restart-button');
 
 canvas.width = 400;
 canvas.height = 400;
 
-startButton.addEventListener('click', startGame);
+let gameRunning = false;
+let player = { x: 50, y: 50, size: 20, speed: 3 };
+let shadow = { x: 350, y: 350, size: 20, speed: 2 };
+let keys = {};
 
 function startGame() {
     gameRunning = true;
-    startButton.style.display = 'none';
-    canvas.style.display = 'block';
+    endScreen.style.display = 'none';
+    player.x = 50;
+    player.y = 50;
+    shadow.x = 350;
+    shadow.y = 350;
     requestAnimationFrame(updateGame);
+}
+
+function endGame(message) {
+    gameRunning = false;
+    endText.textContent = message;
+    endScreen.style.display = 'flex';
 }
 
 function updateGame() {
@@ -28,33 +34,46 @@ function updateGame() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Movimenta o jogador
-    if (playerX + playerSize > canvas.width || playerX < 0) {
-        gameOver();
-        return;
-    }
+    if (keys.ArrowUp && player.y > 0) player.y -= player.speed;
+    if (keys.ArrowDown && player.y + player.size < canvas.height) player.y += player.speed;
+    if (keys.ArrowLeft && player.x > 0) player.x -= player.speed;
+    if (keys.ArrowRight && player.x + player.size < canvas.width) player.x += player.speed;
 
-    playerX += velocity;
-    
+    // Movimenta a sombra na direção do jogador
+    if (shadow.x < player.x) shadow.x += shadow.speed;
+    if (shadow.x > player.x) shadow.x -= shadow.speed;
+    if (shadow.y < player.y) shadow.y += shadow.speed;
+    if (shadow.y > player.y) shadow.y -= shadow.speed;
+
     // Desenha o jogador
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(playerX, playerY, playerSize, playerSize);
+    ctx.fillStyle = 'yellow';
+    ctx.fillRect(player.x, player.y, player.size, player.size);
 
-    // Aumenta a velocidade do jogo
-    velocity += 0.01;
+    // Desenha a sombra
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(shadow.x, shadow.y, shadow.size, shadow.size);
 
-    requestAnimationFrame(updateGame);
-}
-
-function gameOver() {
-    gameRunning = false;
-    canvas.style.display = 'none';
-    endScreen.style.display = 'block';
-
-    if (playerX >= canvas.width) {
-        // Jogador ganhou
-        endText.innerHTML = '<p>TExte numero um, catorrteze vezes mamão</p>';
+    // Checa colisão
+    if (player.x < shadow.x + shadow.size &&
+        player.x + player.size > shadow.x &&
+        player.y < shadow.y + shadow.size &&
+        player.y + player.size > shadow.y) {
+        endGame('Game Over');
     } else {
-        // Jogador perdeu
-        endText.textContent = 'Game Over';
+        requestAnimationFrame(updateGame);
     }
 }
+
+function handleKeydown(event) {
+    keys[event.key] = true;
+}
+
+function handleKeyup(event) {
+    keys[event.key] = false;
+}
+
+document.addEventListener('keydown', handleKeydown);
+document.addEventListener('keyup', handleKeyup);
+restartButton.addEventListener('click', startGame);
+
+startGame();
